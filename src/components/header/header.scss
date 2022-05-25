@@ -1,0 +1,63 @@
+@import "../../sass/mixins";
+
+.header__container {
+    background-color: #333;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 6px;
+    margin-bottom: 70px;
+    position: relative;
+}
+
+.header__img {
+    width: 20px;
+    height: 20px;
+}
+
+.header__sort-btn {
+    @include reset-btn;
+    background-color: #00b7ff;
+    padding: 10px 20px;
+}
+
+.header__add-btn {
+    @include reset-btn;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.header__sort-modal {
+    display: none;
+    width: 200px;
+    background-color: #fff;
+    color: #333;
+    flex-direction: column;
+    border: 1px solid #00b7ff;
+    border-bottom: none;
+    position: absolute;
+    z-index: 3;
+    top: 70px;
+    left: 470px;
+}
+
+.header__sort-modal--active {
+    display: flex;
+}
+
+.sort__span {
+    display: block;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-bottom: 1px solid #00b7ff;
+    color: #333;
+    cursor: pointer;
+}
+
+.sort__radio:checked + .sort__span {
+    background-color: #00b7ff;
+    color: #fff;
+}

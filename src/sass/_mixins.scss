@@ -1,0 +1,23 @@
+@mixin reset-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@mixin reset-btn {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@mixin text ($fz, $fw : 500, $lh : 1.5) {
+  font-size: $fz;
+  font-weight: $fw;
+  line-height: $lh;
+}
