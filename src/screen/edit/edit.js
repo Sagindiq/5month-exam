@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useData } from "../../contexts/data";
 import "./add.scss";
-const AddComment = () => {
+const EditComment = () => {
 
     const {posts, setPost} = useData();
 
@@ -11,6 +11,7 @@ const AddComment = () => {
     const [descValue, setDescValue] = useState("");
 
     const navigator = useNavigate();
+    const params = useParams();
 
     const titleRef = useRef();
     const emailRef = useRef();
@@ -34,19 +35,36 @@ const AddComment = () => {
         descRef.current.placeholder = "";
     }
 
+
+    const commentItem = posts.find((post) => post.id === +params.id)
+    const commentIndex = posts.findIndex((post) => post.id === +params.id);
+    console.log(commentIndex);
+    
+    
+    const { id, postId, name, email, body} = commentItem;
+    
+    useEffect(() => {
+        setTitleValue(name);
+        setEmailValue(email);
+        setDescValue(body);
+    }, []);
+    
+
+
     const handleSubmit = (evt) => {
         evt.preventDefault();
 
         if (titleValue.trim() && emailValue.trim() && descValue.trim()) {
             setPost([
-            ...posts,
+            ...posts.slice(0, commentIndex),
             {
-                postId: posts.length + 1,
-                id: posts.length + 1,
+                postId: postId,
+                id: id,
                 email: emailValue,
                 name: titleValue,
                 body: descValue
-            }
+            },
+            ...posts.slice(commentIndex + 1)
         ])
         
         navigator('/');
@@ -70,36 +88,35 @@ const AddComment = () => {
         }
         
     }
-    
 
 
     return (
 
-        <div className="add">
-            <div className="add__container container">
+        <div className="edit">
+            <div className="edit__container container">
 
-                <h1 className="add__title">Add comments</h1>
+                <h1 className="edit__title">Edit comments</h1>
 
-                <form className="add__form">
+                <form className="edit__form">
 
-                    <label className="add__label">
+                    <label className="edit__label">
                         Comment title:
-                        <input ref={titleRef} value={titleValue} onChange={titleChange} className="add__comment-title add__input" type="text" />
+                        <input ref={titleRef} value={titleValue} onChange={titleChange} className="edit__comment-title edit__input" type="text" />
                     </label>
 
-                    <label className="add__label">
+                    <label className="edit__label">
                         Comment email:
-                        <input required ref={emailRef} value={emailValue} onChange={emailChange} className="add__comment-email add__input" type="email"/>
+                        <input required ref={emailRef} value={emailValue} onChange={emailChange} className="edit__comment-email edit__input" type="email"/>
                     </label>
 
-                    <label className="add__label">
+                    <label className="edit__label">
                         Comment description:
-                        <textarea ref={descRef} value={descValue} onChange={descChange} className="add__comment-description " type="text"/>
+                        <textarea ref={descRef} value={descValue} onChange={descChange} className="edit__comment-description " type="text"/>
                     </label>
 
-                    <div className="add__buttons">
-                        <Link className="add__back-btn add__btn" to="/" >Go back</Link>
-                        <button onClick={handleSubmit} className="add__comment-btn add__btn">Add Comment</button>
+                    <div className="edit__buttons">
+                        <Link className="edit__back-btn edit__btn" to="/" >Go back</Link>
+                        <button onClick={handleSubmit} className="edit__comment-btn edit__btn">Edit Comment</button>
                     </div>
 
                 </form>
@@ -110,4 +127,4 @@ const AddComment = () => {
     );
 }
 
-export default AddComment;
+export default EditComment;

@@ -24,8 +24,14 @@
 
 .header__add-btn {
     @include reset-btn;
-    background-color: #fff;
-    padding: 10px;
+    background-color: #1d4ed8;
+    color: #fff;
+    padding: 10px 15px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #3d65d1;
+    }
 }
 
 .header__sort-modal {
@@ -60,4 +66,20 @@
 .sort__radio:checked + .sort__span {
     background-color: #00b7ff;
     color: #fff;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+
+    & strong {
+        text-transform: capitalize;
+        color: #a4c2f7;
+    }
+}
+
+.header__img {
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
 }

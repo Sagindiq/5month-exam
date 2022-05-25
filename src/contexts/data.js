@@ -14,7 +14,6 @@ const CommentProvider = ({ children }) => {
         .then(data => setPost(data))
     }
     }, [isFetch]);
-    console.log(isFetch);
     
 
 
