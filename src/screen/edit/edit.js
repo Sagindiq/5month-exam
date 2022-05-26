@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useData } from "../../contexts/data";
-import "./add.scss";
+import "./edit.scss";
 const EditComment = () => {
 
     const {posts, setPost} = useData();
@@ -38,7 +38,6 @@ const EditComment = () => {
 
     const commentItem = posts.find((post) => post.id === +params.id)
     const commentIndex = posts.findIndex((post) => post.id === +params.id);
-    console.log(commentIndex);
     
     
     const { id, postId, name, email, body} = commentItem;
@@ -89,6 +88,16 @@ const EditComment = () => {
         
     }
 
+    const handleDeleteBtn = () => {
+
+        setPost([
+            ...posts.slice(0, commentIndex),
+            ...posts.slice(commentIndex + 1)
+        ])
+
+        navigator('/');
+    }
+
 
     return (
 
@@ -116,6 +125,7 @@ const EditComment = () => {
 
                     <div className="edit__buttons">
                         <Link className="edit__back-btn edit__btn" to="/" >Go back</Link>
+                        <button onClick={handleDeleteBtn} className="edit__delete-button edit__btn" type="button">Delete comment</button>
                         <button onClick={handleSubmit} className="edit__comment-btn edit__btn">Edit Comment</button>
                     </div>
 

@@ -51,9 +51,9 @@ const Header = () => {
                     posts.sort((a, b) => {
                         switch (option) {
                             case 1:
-                                return b.name > a.name ? 1 :  -1
+                                return a.name > b.name ? 1 :  -1
                             case 2:
-                                return a.name > b.name ? 1 : -1
+                                return b.name > a.name ? 1 : -1
                             default:
                                 return 0;
                         }

@@ -6,7 +6,7 @@
     // border: 1px solid aqua;
     // background-color: rgba(0, 0, 0, 0.11);
     background-color: #f4f4f4;
-    box-shadow: 20px 20px 15px -3px rgba(0,0,0,0.1);
+    box-shadow: 20px 20px 15px -3px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
@@ -71,23 +71,38 @@
 }
 
 .edit__back-btn {
-    background-color: red;
+    background-color: rgb(0, 255, 200);
+    padding: 10px 15px;
     color: #333333ea;
-    box-shadow: 19px 21px 15px -3px rgba(0,0,0,0.1);
+    box-shadow: 19px 21px 15px -3px rgba(0, 0, 0, 0.1);
 
     &:hover {
-        background-color: rgba(255, 0, 0, 0.414);
+        cursor: pointer;
+        background-color: aquamarine;
     }
 }
 
 .edit__comment-btn {
     color: rgba(51, 51, 51, 0.605);
     background-color: #1d4ed8;
-    box-shadow: 19px 21px 21px 6px rgba(0,0,0,0.1);
+    box-shadow: 19px 21px 21px 6px rgba(0, 0, 0, 0.1);
     color: #f2f2f2;
 
     &:hover {
         background-color: #1d4fd8a9;
         cursor: pointer;
     }
+}
+
+.edit__delete-button {
+    background-color: red;
+    padding: 10px 15px;
+    color: #f2f2f2d3;
+    box-shadow: 19px 21px 21px 6px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(255, 0, 0, 0.414);
+    }
+
 }

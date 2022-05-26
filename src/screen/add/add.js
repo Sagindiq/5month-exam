@@ -41,15 +41,13 @@ const AddComment = () => {
 
            const ps = posts.unshift(
                 {
-                    postId: posts.length + 1,
-                    id: posts.length + 1,
+                    postId: Math.floor(Math.random()),
+                    id: Math.floor(Math.random()),
                     email: emailValue,
                     name: titleValue,
                     body: descValue
                 }
             )
-
-            console.log(posts);
             
 
             setPost([
