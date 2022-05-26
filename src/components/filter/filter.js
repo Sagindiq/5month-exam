@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useData } from "../../contexts/data";
 import "./filter.scss";
+import searchImg from "../../assets/images/search-icon.svg";
 const Filter = () => {
 
     const [searchValue, setSearch] = useState("");
@@ -21,6 +22,8 @@ const Filter = () => {
             //     posts
             // )
 
+            setSearch("");
+
             return setPost(
                 posts.filter((post) => {
                     const searchRegExp = new RegExp(searchValue, "gi");
@@ -34,25 +37,23 @@ const Filter = () => {
                 oldValue
                 )
 
-            }
         }
+        
+    }
             
             
 
 
     return (
-        <div className="filter">
-            <div className="filter__container container">
-                <form className="filter__form">
-                    <label className="filter__search-label">
-                        <span className="filter__search-label-span">Search:</span>
-                        <input value={searchValue} onChange={inputChange} type="search" className="filter__search-input" />
-                    </label>
 
-                    <button onClick={handleSearchBtn} className="filter__search-btn">Search</button>
-                </form>
-            </div>
-        </div>
+        <form className="filter__form">
+            <label className="filter__search-label">
+                <input value={searchValue} onChange={inputChange} type="text" className="filter__search-input" />
+
+            <button onClick={handleSearchBtn} className="filter__search-btn">
+            </button>
+            </label>
+        </form>
     )
 }
 

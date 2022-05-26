@@ -7,9 +7,7 @@ const Main = () => {
     return (
         <>
         <Header />
-        <Filter />
         <Comments />
-        
         </>
     )
 }

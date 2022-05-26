@@ -38,15 +38,22 @@ const AddComment = () => {
         evt.preventDefault();
 
         if (titleValue.trim() && emailValue.trim() && descValue.trim()) {
+
+           const ps = posts.unshift(
+                {
+                    postId: posts.length + 1,
+                    id: posts.length + 1,
+                    email: emailValue,
+                    name: titleValue,
+                    body: descValue
+                }
+            )
+
+            console.log(posts);
+            
+
             setPost([
-            ...posts,
-            {
-                postId: posts.length + 1,
-                id: posts.length + 1,
-                email: emailValue,
-                name: titleValue,
-                body: descValue
-            }
+                ...posts
         ])
         
         navigator('/');
@@ -66,6 +73,7 @@ const AddComment = () => {
         }
 
         if (!descValue) {
+            !titleValue ? titleRef.current.focus() : !emailValue ? emailRef.current.focus() : descRef.current.focus();
             descRef.current.style = "outline: 1px solid red";
             descRef.current.placeholder = "Please fill out description";
         }

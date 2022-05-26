@@ -64,6 +64,7 @@
     width: 94%;
     display: flex;
     align-items: center;
+    overflow: hidden; // buni ishlatganimni sababi oldingi 
     
     &-img {
         margin-right: 5px;

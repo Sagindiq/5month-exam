@@ -4,6 +4,7 @@ import "./header.scss";
 import FilterRadio from "../filter-radio/filter-radio";
 import { useData } from "../../contexts/data";
 import logoImg from "../../assets/images/logo.png";
+import Filter from "../filter/filter";
 
 const Header = () => {
 
@@ -68,23 +69,25 @@ const Header = () => {
                     <img className="header__img" src={logoImg} alt="" />
                     <strong>Comments</strong>
                     </a>
-                <button onClick={HandleSortBtn} className="header__sort-btn">Sort {option ? `: ${sorts.find((sort) => sort.id === option).name}` : ""}</button>
 
-                
-                    <div className={`header__sort-modal ${modal ? " header__sort-modal--active" : ""}`}>
-
-                        <form ref={sortModalRef} onChange={ModalChange}>
-                            {
-                                sorts.map((sort) => {
-
-                                    return (
-                                        <FilterRadio  key={sort.id} data-id={sort.id}  className="sort__radio visually-hidden" labelcname="sort__label" spanCName="sort__span" >{sort.name}</FilterRadio>
-                                        )
-                                    })
-                            }
-                        </form>
+                <div className="header__sort">
+                    <button onClick={HandleSortBtn} className="header__sort-btn">Sort {option ? `: ${sorts.find((sort) => sort.id === option).name}` : ""}</button>
                     
-                    </div>
+                        <div className={`header__sort-modal ${modal ? " header__sort-modal--active" : ""}`}>
+                            <form className="header__sort-form" ref={sortModalRef} onChange={ModalChange}>
+                                {
+                                    sorts.map((sort) => {
+                                        return (
+                                            <FilterRadio  key={sort.id} data-id={sort.id}  className="sort__radio visually-hidden" labelcname="sort__label" spanCName="sort__span" >{sort.name}</FilterRadio>
+                                            )
+                                        })
+                                }
+                            </form>
+                    
+                        </div>
+                </div>
+
+                    <Filter />
                 
 
                 <Link className="header__add-btn" to="/add">Add comment</Link>

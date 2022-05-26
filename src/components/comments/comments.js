@@ -50,7 +50,7 @@ const Comments = () => {
                                 </div>
                             )
 
-                        }).reverse()
+                        })
                     }
 
                 </ul>
