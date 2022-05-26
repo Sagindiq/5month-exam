@@ -50,6 +50,7 @@ const AddComment = () => {
         ])
         
         navigator('/');
+        
         }
 
         if (!titleValue.trim()) {

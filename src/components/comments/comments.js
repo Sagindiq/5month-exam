@@ -7,11 +7,8 @@ import descImg from "../../assets/images/desc.svg";
 import editImg from "../../assets/images/edit.png";
 
 const Comments = () => {
-
+    
     const {posts} = useData();
-    console.log(posts);
-    
-    
     
     
     return (
